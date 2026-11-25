@@ -38,7 +38,6 @@ FROM (
 UNION ALL
 
 -- 6. Order Items: What is the grain? 
--- We check order_id + order_item_id together because one order has many items.
 SELECT 'Order Items Duplicates', COUNT(*)
 FROM (
     SELECT order_id, order_item_id FROM bronze_olist_order_items GROUP BY order_id, order_item_id HAVING COUNT(*) > 1
@@ -46,7 +45,7 @@ FROM (
 
 
 
--- 547 review duplicates ar efound 
+-- 547 review duplicates are found 
 
 select  * 
 from bronze_olist_order_reviews
